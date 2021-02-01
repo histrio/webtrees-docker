@@ -1,6 +1,6 @@
 FROM php:7.3.7-fpm-alpine3.10
 
-ENV WEBTREES_VERSION 1.7.14
+ENV WEBTREES_VERSION 2.0.11
 
 RUN set -e \
     && apk add --no-cache freetype libpng libjpeg-turbo ca-certificates openssl libpng-dev libjpeg-turbo-dev freetype-dev \
