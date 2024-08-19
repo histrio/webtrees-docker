@@ -1,7 +1,15 @@
 name: Build and Push Docker Image
 
 on:
+  push:
+    tags:
+      - 'v*'  # Matches version tags like v1.0.0, v2.1, etc.
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag for the Docker image'
+        required: true
+        default: 'latest'
 
 jobs:
   build-and-push:
@@ -30,5 +38,6 @@ jobs:
           context: .
           push: true
           tags: |
-            histrio/webtrees:test
+            histrio/webtrees:latest
+            histrio/webtrees:${{ github.event.inputs.version }}
           platforms: linux/amd64,linux/arm64
